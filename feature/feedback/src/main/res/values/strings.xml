@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feedback_title">Feedback</string>
+    <string name="feedback_intro">Found a bug or missing a feature? Describe it below. The report opens as a prefilled GitHub issue or email — nothing is sent without you seeing it first.</string>
+    <string name="feedback_type_bug">Bug report</string>
+    <string name="feedback_type_feature">Feature request</string>
+    <string name="feedback_field_title">Title</string>
+    <string name="feedback_field_description">Describe the issue or idea</string>
+    <string name="feedback_include_device">Attach device info</string>
+    <string name="feedback_include_device_hint">App version, device model, Android version, screen size, and language. No logs, no identifiers.</string>
+    <string name="feedback_submit_section">Submit</string>
+    <string name="feedback_submit_github">Open GitHub issue</string>
+    <string name="feedback_submit_email">Send by email</string>
+    <string name="feedback_submit_copy">Copy report</string>
+    <string name="feedback_copied">Report copied to clipboard</string>
+    <string name="feedback_no_handler">No app available to handle this action</string>
+</resources>

@@ -1,0 +1,118 @@
+# Android CI: formatting, static analysis, lint, unit tests, debug + release builds.
+#
+# Triggers and behavior:
+#   - PR to main            -> full check + build, artifacts uploaded
+#   - push to main          -> same (post-merge safety net)
+#   - push to claude/**     -> same (AI agent branches get the compile gate;
+#                              there is no local Android SDK in agent sessions)
+#   - workflow_dispatch     -> same
+#
+# Releases are NOT cut here — use the manual release.yml workflow.
+# Docs-only changes (markdown, LICENSE, .gitignore, site/, wiki/) are skipped.
+
+name: CI
+
+on:
+  push:
+    branches: ["main", "claude/**"]
+    paths-ignore:
+      - "**/*.md"
+      - "LICENSE"
+      - ".gitignore"
+      - "site/**"
+      - "wiki/**"
+  pull_request:
+    branches: ["main"]
+    paths-ignore:
+      - "**/*.md"
+      - "LICENSE"
+      - ".gitignore"
+      - "site/**"
+      - "wiki/**"
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build & test
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          packages: "platforms;android-36 build-tools;36.0.0"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          cache-read-only: ${{ github.event_name == 'pull_request' }}
+
+      - name: Spotless (ktlint formatting)
+        run: ./gradlew spotlessCheck --stacktrace --no-daemon
+
+      - name: Detekt (static analysis)
+        run: ./gradlew detekt --stacktrace --no-daemon
+
+      - name: Android Lint (debug)
+        run: ./gradlew lintDebug --stacktrace --no-daemon
+
+      - name: Unit tests
+        run: ./gradlew testDebugUnitTest --stacktrace --no-daemon
+
+      - name: Assemble debug APK
+        run: ./gradlew assembleDebug --stacktrace --no-daemon
+
+      - name: Bundle release AAB (fallback-signed)
+        run: ./gradlew bundleRelease --stacktrace --no-daemon
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: app-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload lint report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lint-reports
+          path: "**/build/reports/lint-results-*.html"
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: unit-test-reports
+          path: "**/build/reports/tests/testDebugUnitTest/"
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Upload detekt report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: detekt-reports
+          path: build/reports/detekt/
+          if-no-files-found: ignore
+          retention-days: 7

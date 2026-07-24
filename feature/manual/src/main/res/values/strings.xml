@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="manual_title">User manual</string>
+    <string name="manual_intro">Everything you need to know about the app. The same manual is available in the project wiki and on the project website.</string>
+    <string name="manual_chapter_start_title">Getting started</string>
+    <string name="manual_chapter_start_body">The app opens on the Home screen. Use the navigation bar (or the rail on large screens) to switch between Home, the manual, feedback, and settings. Everything works offline — the app never connects to the internet on its own.</string>
+    <string name="manual_chapter_theme_title">Theme and appearance</string>
+    <string name="manual_chapter_theme_body">Under Settings → Appearance you can follow the system theme or force light/dark mode. On Android 12 and newer you can also enable dynamic color, which derives the app palette from your wallpaper.</string>
+    <string name="manual_chapter_language_title">Language</string>
+    <string name="manual_chapter_language_body">The app ships in English and German and follows your per-app language preference. Change it under Settings → Language, which opens the system language settings for this app.</string>
+    <string name="manual_chapter_feedback_title">Bug reports and feature requests</string>
+    <string name="manual_chapter_feedback_body">Use the Feedback screen to report bugs or request features. Your description plus an optional coarse device snapshot (app version, device model, Android version — never logs or identifiers) is turned into a report you can submit as a prefilled GitHub issue, send by email, or copy to the clipboard.</string>
+    <string name="manual_chapter_privacy_title">Privacy</string>
+    <string name="manual_chapter_privacy_body">The app requests no permissions, contains no trackers, and makes no network requests. Feedback reports are only ever sent through apps you choose (browser or email), and you always see the full content before sending.</string>
+</resources>

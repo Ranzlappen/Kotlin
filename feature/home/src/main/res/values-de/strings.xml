@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title">Willkommen</string>
+    <string name="home_intro">Das ist die Ranzlappen-Kotlin-Vorlagen-App: ein mehrmoduliges MVVM-Compose-Grundgerüst mit Designsystem, Lokalisierung, integriertem Handbuch und Feedback-Funktion. Ersetze diesen Bildschirm durch den echten Startbildschirm deiner App.</string>
+    <string name="home_explore">Entdecken</string>
+    <string name="home_card_manual_title">Benutzerhandbuch</string>
+    <string name="home_card_manual_subtitle">So funktioniert die App – direkt in der App</string>
+    <string name="home_card_feedback_title">Feedback</string>
+    <string name="home_card_feedback_subtitle">Fehler melden oder Funktion vorschlagen</string>
+    <string name="home_card_settings_title">Einstellungen</string>
+    <string name="home_card_settings_subtitle">Design, Sprache und Infos</string>
+</resources>

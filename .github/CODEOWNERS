@@ -1,0 +1,7 @@
+# Default owner for everything in the repo. Last matching pattern wins.
+*   @Ranzlappen
+
+# Security-sensitive paths — changes here deserve explicit attention.
+/signing/            @Ranzlappen
+/.github/workflows/  @Ranzlappen
+/LASTENHEFT.md       @Ranzlappen

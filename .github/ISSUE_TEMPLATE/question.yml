@@ -1,0 +1,25 @@
+name: Question
+description: Ask about usage, setup, or behavior.
+title: "[Question] "
+labels: ["question"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true
+  - type: textarea
+    id: docs
+    attributes:
+      label: Where did you look already?
+      description: README, wiki, in-app manual, prior issues — helps us improve the docs.
+    validations:
+      required: false
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-flight
+      options:
+        - label: I searched existing open and closed issues for duplicates.
+          required: true

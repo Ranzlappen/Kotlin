@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="manual_title">Benutzerhandbuch</string>
+    <string name="manual_intro">Alles Wissenswerte über die App. Dasselbe Handbuch findest du im Projekt-Wiki und auf der Projekt-Website.</string>
+    <string name="manual_chapter_start_title">Erste Schritte</string>
+    <string name="manual_chapter_start_body">Die App startet auf dem Home-Bildschirm. Über die Navigationsleiste (bzw. die seitliche Leiste auf großen Bildschirmen) wechselst du zwischen Home, Handbuch, Feedback und Einstellungen. Alles funktioniert offline – die App verbindet sich nie von selbst mit dem Internet.</string>
+    <string name="manual_chapter_theme_title">Design und Darstellung</string>
+    <string name="manual_chapter_theme_body">Unter Einstellungen → Darstellung kannst du dem Systemdesign folgen oder den hellen/dunklen Modus erzwingen. Ab Android 12 kannst du zusätzlich dynamische Farben aktivieren, die die App-Palette aus deinem Hintergrundbild ableiten.</string>
+    <string name="manual_chapter_language_title">Sprache</string>
+    <string name="manual_chapter_language_body">Die App ist auf Englisch und Deutsch verfügbar und folgt deiner App-Spracheinstellung. Ändere sie unter Einstellungen → Sprache; dort öffnen sich die Systemeinstellungen für diese App.</string>
+    <string name="manual_chapter_feedback_title">Fehlerberichte und Funktionswünsche</string>
+    <string name="manual_chapter_feedback_body">Über den Feedback-Bildschirm meldest du Fehler oder wünschst dir Funktionen. Deine Beschreibung plus ein optionaler grober Geräte-Schnappschuss (App-Version, Gerätemodell, Android-Version – nie Logs oder Kennungen) wird zu einem Bericht, den du als vorausgefülltes GitHub-Issue, per E-Mail oder über die Zwischenablage einreichen kannst.</string>
+    <string name="manual_chapter_privacy_title">Datenschutz</string>
+    <string name="manual_chapter_privacy_body">Die App fordert keine Berechtigungen an, enthält keine Tracker und stellt keine Netzwerkanfragen. Feedback-Berichte werden nur über Apps versendet, die du auswählst (Browser oder E-Mail), und du siehst immer den vollständigen Inhalt vor dem Senden.</string>
+</resources>

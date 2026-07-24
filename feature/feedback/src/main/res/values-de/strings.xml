@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feedback_title">Feedback</string>
+    <string name="feedback_intro">Fehler gefunden oder Funktion vermisst? Beschreibe es unten. Der Bericht öffnet sich als vorausgefülltes GitHub-Issue oder als E-Mail – nichts wird gesendet, ohne dass du es vorher siehst.</string>
+    <string name="feedback_type_bug">Fehlerbericht</string>
+    <string name="feedback_type_feature">Funktionswunsch</string>
+    <string name="feedback_field_title">Titel</string>
+    <string name="feedback_field_description">Beschreibe das Problem oder die Idee</string>
+    <string name="feedback_include_device">Geräteinfos anhängen</string>
+    <string name="feedback_include_device_hint">App-Version, Gerätemodell, Android-Version, Bildschirmgröße und Sprache. Keine Logs, keine Kennungen.</string>
+    <string name="feedback_submit_section">Absenden</string>
+    <string name="feedback_submit_github">GitHub-Issue öffnen</string>
+    <string name="feedback_submit_email">Per E-Mail senden</string>
+    <string name="feedback_submit_copy">Bericht kopieren</string>
+    <string name="feedback_copied">Bericht in Zwischenablage kopiert</string>
+    <string name="feedback_no_handler">Keine App zum Ausführen dieser Aktion verfügbar</string>
+</resources>

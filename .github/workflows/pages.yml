@@ -1,0 +1,58 @@
+# Deploys the static project site in site/ (homepage, user manual mirror,
+# privacy page, PWA shell) to GitHub Pages.
+#
+# Deliberately isolated from the app pipelines: this workflow fires ONLY on
+# site/** (plus itself), and ci-android.yml / release.yml never fire on
+# site/**.
+#
+# One-time setup (repo settings, not automatable from here — see
+# REPO_SETUP_CHECKLIST.md):
+#   1. Settings -> Pages -> Source: "GitHub Actions"
+#   2. Settings -> Pages -> Custom domain: <subdomain>.ranzlappen.com
+#   3. DNS: CNAME record  <subdomain>  ->  ranzlappen.github.io
+#   4. Update site/CNAME to match.
+#
+# Required secrets: none.
+
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

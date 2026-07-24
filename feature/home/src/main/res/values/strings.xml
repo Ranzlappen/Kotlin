@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title">Welcome</string>
+    <string name="home_intro">This is the Ranzlappen Kotlin template app: a multi-module MVVM Compose skeleton with a design system, localization, an in-app manual, and a feedback flow already wired up. Replace this screen with your app\'s real start screen.</string>
+    <string name="home_explore">Explore</string>
+    <string name="home_card_manual_title">User manual</string>
+    <string name="home_card_manual_subtitle">How the app works, right inside the app</string>
+    <string name="home_card_feedback_title">Feedback</string>
+    <string name="home_card_feedback_subtitle">Report a bug or request a feature</string>
+    <string name="home_card_settings_title">Settings</string>
+    <string name="home_card_settings_subtitle">Theme, language, and about</string>
+</resources>
