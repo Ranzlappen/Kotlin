@@ -80,8 +80,12 @@ same PR. Chapter structure stays identical across surfaces.
 - No analytics, no trackers, no logging of user content — ever.
 - Anything leaving the device goes through an app the user chooses, with
   the content visible first.
-- Backup rules (`backup_rules.xml` / `data_extraction_rules.xml`) exist and
-  only include harmless data.
+- `android:allowBackup="false"` by default (CodeQL flags backup as a
+  high-severity finding, and the template stores only recreatable
+  settings). If a real app later stores data worth backing up, enable it
+  together with explicit `dataExtractionRules`/`fullBackupContent` rules
+  that include only harmless data — and dismiss the CodeQL alert
+  deliberately.
 
 ### A7. Modern design pass
 
