@@ -11,6 +11,9 @@ indent_size = 4
 max_line_length = 120
 
 [*.{kt,kts}]
+# Pin the style so Spotless (API default: intellij_idea) and the ktlint CLI
+# (default: ktlint_official) format identically.
+ktlint_code_style = ktlint_official
 ktlint_function_naming_ignore_when_annotated_with = Composable
 
 [*.{yml,yaml,json}]
