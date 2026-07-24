@@ -1,0 +1,1 @@
+[`README`](https://github.com/Ranzlappen/Kotlin/blob/main/README.md) · [`CLAUDE.md`](https://github.com/Ranzlappen/Kotlin/blob/main/CLAUDE.md) · [`LASTENHEFT.md`](https://github.com/Ranzlappen/Kotlin/blob/main/LASTENHEFT.md) · [Issues](https://github.com/Ranzlappen/Kotlin/issues) · Standards: [repo-standards v3](https://github.com/Ranzlappen/repo-standards)

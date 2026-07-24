@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kotlin Android Template — a batteries-included starting point</title>
+  <meta name="description" content="A state-of-the-art Android template: multi-module MVVM, Jetpack Compose, Material 3, full localization, in-app feedback and manual, CI/CD, and a baked-in requirements spec for AI agents.">
+  <meta name="theme-color" content="#4a5c92">
+  <link rel="icon" href="/assets/icon.png">
+  <link rel="apple-touch-icon" href="/assets/icon-192.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/assets/icon.png" alt="">Kotlin Template</a>
+      <nav>
+        <a href="/manual/">Manual</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero wrap">
+      <h1>Every new Android app, already half done.</h1>
+      <p class="lead">Multi-module MVVM · Jetpack Compose · Material 3 ·
+        localization · in-app feedback &amp; manual · CI/CD with signed
+        releases — plus a Lastenheft that keeps humans and AI agents honest.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/Ranzlappen/Kotlin">Use the template on GitHub</a>
+        <a class="btn ghost" href="/manual/">Read the manual</a>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <h2>What's inside</h2>
+        <div class="grid">
+          <div class="card"><h3>🏗️ Modern architecture</h3><p>app + core + feature modules, MVVM with StateFlow, Hilt DI, pure-Kotlin domain layer with JVM unit tests.</p></div>
+          <div class="card"><h3>🎨 Design system</h3><p>Material 3 with dynamic color, dark/light/system themes, spacing tokens, adaptive navigation from phone to tablet.</p></div>
+          <div class="card"><h3>🌍 Localization first</h3><p>English and German out of the box, per-app language picker, and lint that fails the build on untranslated strings.</p></div>
+          <div class="card"><h3>🐛 Feedback built in</h3><p>Bug reports and feature requests from inside the app — device snapshot, Markdown report, prefilled GitHub issue or email.</p></div>
+          <div class="card"><h3>🚀 CI/CD ready</h3><p>Formatting, static analysis, lint, tests, CodeQL and secret scanning, plus a one-click release workflow producing signed APK + AAB.</p></div>
+          <div class="card"><h3>📜 The Lastenheft twist</h3><p>A personal requirements spec baked into the repo. AI agents that scaffold from this template must run its final pass — every requirement checked, every gap reported.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Ranzlappen · MIT license</span>
+      <span class="spacer"></span>
+      <a href="/manual/">Manual</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/support/">Support</a>
+      <a href="https://ko-fi.com/F1F1140LWT">☕ Ko-fi</a>
+    </div>
+  </footer>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js");
+    }
+  </script>
+</body>
+</html>

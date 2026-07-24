@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Template</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_manual">Manual</string>
+    <string name="nav_feedback">Feedback</string>
+    <string name="nav_settings">Settings</string>
+</resources>
