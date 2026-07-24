@@ -20,7 +20,7 @@ val keystoreProperties =
 
 android {
     namespace = "io.github.ranzlappen.template"
-    compileSdk = 37
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "io.github.ranzlappen.template"
