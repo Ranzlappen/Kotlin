@@ -31,16 +31,18 @@ fun ScreenContainer(
 ) {
     val spacing = LocalSpacing.current
     Column(
-        modifier = modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
+        modifier =
+            modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Column(
-            modifier = Modifier
-                .widthIn(max = 640.dp)
-                .fillMaxWidth()
-                .padding(spacing.medium),
+            modifier =
+                Modifier
+                    .widthIn(max = 640.dp)
+                    .fillMaxWidth()
+                    .padding(spacing.medium),
             verticalArrangement = Arrangement.spacedBy(spacing.medium),
         ) {
             Text(

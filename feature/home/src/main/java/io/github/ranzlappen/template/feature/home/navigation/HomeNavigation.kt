@@ -8,8 +8,7 @@ import io.github.ranzlappen.template.feature.home.HomeScreen
 
 const val HOME_ROUTE = "home"
 
-fun NavController.navigateToHome(navOptions: NavOptions? = null) =
-    navigate(HOME_ROUTE, navOptions)
+fun NavController.navigateToHome(navOptions: NavOptions? = null) = navigate(HOME_ROUTE, navOptions)
 
 fun NavGraphBuilder.homeScreen(
     onNavigateToManual: () -> Unit,

@@ -20,8 +20,9 @@ fun SectionHeader(
         text = text,
         style = MaterialTheme.typography.titleMedium,
         color = MaterialTheme.colorScheme.primary,
-        modifier = modifier
-            .padding(top = spacing.small)
-            .semantics { heading() },
+        modifier =
+            modifier
+                .padding(top = spacing.small)
+                .semantics { heading() },
     )
 }

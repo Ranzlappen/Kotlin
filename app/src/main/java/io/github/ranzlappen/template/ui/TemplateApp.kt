@@ -50,18 +50,21 @@ fun TemplateApp() {
     NavigationSuiteScaffold(
         navigationSuiteItems = {
             TopLevelDestination.entries.forEach { destination ->
-                val selected = currentDestination?.hierarchy
-                    ?.any { it.route == destination.route } == true
+                val selected =
+                    currentDestination
+                        ?.hierarchy
+                        ?.any { it.route == destination.route } == true
                 item(
                     selected = selected,
                     onClick = { navigateToTopLevel(destination) },
                     icon = {
                         Icon(
-                            imageVector = if (selected) {
-                                destination.selectedIcon
-                            } else {
-                                destination.unselectedIcon
-                            },
+                            imageVector =
+                                if (selected) {
+                                    destination.selectedIcon
+                                } else {
+                                    destination.unselectedIcon
+                                },
                             contentDescription = null,
                         )
                     },
@@ -74,9 +77,10 @@ fun TemplateApp() {
             NavHost(
                 navController = navController,
                 startDestination = HOME_ROUTE,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(innerPadding),
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .padding(innerPadding),
             ) {
                 homeScreen(
                     onNavigateToManual = navController::navigateToManual,

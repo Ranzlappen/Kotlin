@@ -34,7 +34,6 @@ private class FakeUserPreferencesRepository : UserPreferencesRepository {
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class SettingsViewModelTest {
-
     private val testDispatcher = StandardTestDispatcher()
 
     @Before
@@ -48,45 +47,48 @@ class SettingsViewModelTest {
     }
 
     @Test
-    fun `starts loading then emits preferences`() = runTest {
-        val viewModel = SettingsViewModel(FakeUserPreferencesRepository())
+    fun `starts loading then emits preferences`() =
+        runTest {
+            val viewModel = SettingsViewModel(FakeUserPreferencesRepository())
 
-        viewModel.uiState.test {
-            assertEquals(SettingsUiState.Loading, awaitItem())
-            assertEquals(
-                SettingsUiState.Success(UserPreferences()),
-                awaitItem(),
-            )
+            viewModel.uiState.test {
+                assertEquals(SettingsUiState.Loading, awaitItem())
+                assertEquals(
+                    SettingsUiState.Success(UserPreferences()),
+                    awaitItem(),
+                )
+            }
         }
-    }
 
     @Test
-    fun `setting dark theme updates state`() = runTest {
-        val viewModel = SettingsViewModel(FakeUserPreferencesRepository())
+    fun `setting dark theme updates state`() =
+        runTest {
+            val viewModel = SettingsViewModel(FakeUserPreferencesRepository())
 
-        viewModel.uiState.test {
-            awaitItem() // Loading
-            awaitItem() // initial Success
-            viewModel.setDarkThemeConfig(DarkThemeConfig.DARK)
-            assertEquals(
-                SettingsUiState.Success(UserPreferences(darkThemeConfig = DarkThemeConfig.DARK)),
-                awaitItem(),
-            )
+            viewModel.uiState.test {
+                awaitItem() // Loading
+                awaitItem() // initial Success
+                viewModel.setDarkThemeConfig(DarkThemeConfig.DARK)
+                assertEquals(
+                    SettingsUiState.Success(UserPreferences(darkThemeConfig = DarkThemeConfig.DARK)),
+                    awaitItem(),
+                )
+            }
         }
-    }
 
     @Test
-    fun `disabling dynamic color updates state`() = runTest {
-        val viewModel = SettingsViewModel(FakeUserPreferencesRepository())
+    fun `disabling dynamic color updates state`() =
+        runTest {
+            val viewModel = SettingsViewModel(FakeUserPreferencesRepository())
 
-        viewModel.uiState.test {
-            awaitItem() // Loading
-            awaitItem() // initial Success
-            viewModel.setUseDynamicColor(false)
-            assertEquals(
-                SettingsUiState.Success(UserPreferences(useDynamicColor = false)),
-                awaitItem(),
-            )
+            viewModel.uiState.test {
+                awaitItem() // Loading
+                awaitItem() // initial Success
+                viewModel.setUseDynamicColor(false)
+                assertEquals(
+                    SettingsUiState.Success(UserPreferences(useDynamicColor = false)),
+                    awaitItem(),
+                )
+            }
         }
-    }
 }

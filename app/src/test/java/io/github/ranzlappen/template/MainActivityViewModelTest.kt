@@ -34,7 +34,6 @@ private class FakeUserPreferencesRepository : UserPreferencesRepository {
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class MainActivityViewModelTest {
-
     private val testDispatcher = StandardTestDispatcher()
 
     @Before
@@ -48,18 +47,19 @@ class MainActivityViewModelTest {
     }
 
     @Test
-    fun `emits loading then the persisted preferences`() = runTest {
-        val repository = FakeUserPreferencesRepository()
-        repository.setDarkThemeConfig(DarkThemeConfig.DARK)
+    fun `emits loading then the persisted preferences`() =
+        runTest {
+            val repository = FakeUserPreferencesRepository()
+            repository.setDarkThemeConfig(DarkThemeConfig.DARK)
 
-        val viewModel = MainActivityViewModel(repository)
+            val viewModel = MainActivityViewModel(repository)
 
-        viewModel.uiState.test {
-            assertEquals(MainActivityUiState.Loading, awaitItem())
-            assertEquals(
-                MainActivityUiState.Success(UserPreferences(darkThemeConfig = DarkThemeConfig.DARK)),
-                awaitItem(),
-            )
+            viewModel.uiState.test {
+                assertEquals(MainActivityUiState.Loading, awaitItem())
+                assertEquals(
+                    MainActivityUiState.Success(UserPreferences(darkThemeConfig = DarkThemeConfig.DARK)),
+                    awaitItem(),
+                )
+            }
         }
-    }
 }

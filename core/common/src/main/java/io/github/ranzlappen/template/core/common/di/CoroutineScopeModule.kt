@@ -6,11 +6,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.github.ranzlappen.template.core.common.coroutines.Dispatcher
 import io.github.ranzlappen.template.core.common.coroutines.TemplateDispatchers
-import javax.inject.Qualifier
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
+import javax.inject.Qualifier
+import javax.inject.Singleton
 
 /** Application-lifetime scope for work that must outlive a single screen. */
 @Qualifier
@@ -20,7 +20,6 @@ annotation class ApplicationScope
 @Module
 @InstallIn(SingletonComponent::class)
 object CoroutineScopeModule {
-
     @Provides
     @Singleton
     @ApplicationScope

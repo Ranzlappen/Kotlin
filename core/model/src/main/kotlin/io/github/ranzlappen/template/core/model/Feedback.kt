@@ -26,24 +26,25 @@ data class FeedbackReport(
  * Renders the report as GitHub-flavored Markdown. Pure and unit-tested;
  * the exact shape mirrors the issue templates in `.github/ISSUE_TEMPLATE`.
  */
-fun FeedbackReport.toMarkdown(): String = buildString {
-    appendLine("## ${if (type == FeedbackType.BUG_REPORT) "Bug report" else "Feature request"}")
-    appendLine()
-    if (title.isNotBlank()) {
-        appendLine("**${title.trim()}**")
+fun FeedbackReport.toMarkdown(): String =
+    buildString {
+        appendLine("## ${if (type == FeedbackType.BUG_REPORT) "Bug report" else "Feature request"}")
         appendLine()
-    }
-    if (description.isNotBlank()) {
-        appendLine(description.trim())
-        appendLine()
-    }
-    deviceDetails?.let { details ->
-        appendLine("## Environment")
-        appendLine()
-        appendLine("| Property | Value |")
-        appendLine("|---|---|")
-        details.entries.forEach { (label, value) ->
-            appendLine("| $label | $value |")
+        if (title.isNotBlank()) {
+            appendLine("**${title.trim()}**")
+            appendLine()
         }
-    }
-}.trimEnd() + "\n"
+        if (description.isNotBlank()) {
+            appendLine(description.trim())
+            appendLine()
+        }
+        deviceDetails?.let { details ->
+            appendLine("## Environment")
+            appendLine()
+            appendLine("| Property | Value |")
+            appendLine("|---|---|")
+            details.entries.forEach { (label, value) ->
+                appendLine("| $label | $value |")
+            }
+        }
+    }.trimEnd() + "\n"

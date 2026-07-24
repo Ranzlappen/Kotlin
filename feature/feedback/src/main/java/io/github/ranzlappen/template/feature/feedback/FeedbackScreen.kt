@@ -67,10 +67,11 @@ fun FeedbackScreen(
                 SegmentedButton(
                     selected = uiState.type == type,
                     onClick = { viewModel.setType(type) },
-                    shape = SegmentedButtonDefaults.itemShape(
-                        index = index,
-                        count = FeedbackType.entries.size,
-                    ),
+                    shape =
+                        SegmentedButtonDefaults.itemShape(
+                            index = index,
+                            count = FeedbackType.entries.size,
+                        ),
                 ) {
                     Text(
                         stringResource(
@@ -96,9 +97,10 @@ fun FeedbackScreen(
             value = uiState.description,
             onValueChange = viewModel::setDescription,
             label = { Text(stringResource(R.string.feedback_field_description)) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(min = 150.dp),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .heightIn(min = 150.dp),
         )
 
         TemplateCard {
@@ -149,11 +151,15 @@ fun FeedbackScreen(
     }
 }
 
-private fun Context.openGitHubIssue(state: FeedbackUiState, markdown: String) {
-    val url = ISSUES_URL +
-        "?title=" + Uri.encode(state.title.ifBlank { defaultTitle(state) }) +
-        "&labels=" + Uri.encode(if (state.type == FeedbackType.BUG_REPORT) "bug" else "enhancement") +
-        "&body=" + Uri.encode(markdown)
+private fun Context.openGitHubIssue(
+    state: FeedbackUiState,
+    markdown: String,
+) {
+    val url =
+        ISSUES_URL +
+            "?title=" + Uri.encode(state.title.ifBlank { defaultTitle(state) }) +
+            "&labels=" + Uri.encode(if (state.type == FeedbackType.BUG_REPORT) "bug" else "enhancement") +
+            "&body=" + Uri.encode(markdown)
     try {
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     } catch (_: ActivityNotFoundException) {
@@ -161,12 +167,16 @@ private fun Context.openGitHubIssue(state: FeedbackUiState, markdown: String) {
     }
 }
 
-private fun Context.sendFeedbackEmail(state: FeedbackUiState, markdown: String) {
-    val mailto = Uri.parse(
-        "mailto:$FEEDBACK_EMAIL" +
-            "?subject=" + Uri.encode(state.title.ifBlank { defaultTitle(state) }) +
-            "&body=" + Uri.encode(markdown),
-    )
+private fun Context.sendFeedbackEmail(
+    state: FeedbackUiState,
+    markdown: String,
+) {
+    val mailto =
+        Uri.parse(
+            "mailto:$FEEDBACK_EMAIL" +
+                "?subject=" + Uri.encode(state.title.ifBlank { defaultTitle(state) }) +
+                "&body=" + Uri.encode(markdown),
+        )
     try {
         startActivity(
             Intent.createChooser(
@@ -185,9 +195,10 @@ private fun Context.copyReport(markdown: String) {
     Toast.makeText(this, R.string.feedback_copied, Toast.LENGTH_SHORT).show()
 }
 
-private fun Context.defaultTitle(state: FeedbackUiState): String = getString(
-    when (state.type) {
-        FeedbackType.BUG_REPORT -> R.string.feedback_type_bug
-        FeedbackType.FEATURE_REQUEST -> R.string.feedback_type_feature
-    },
-)
+private fun Context.defaultTitle(state: FeedbackUiState): String =
+    getString(
+        when (state.type) {
+            FeedbackType.BUG_REPORT -> R.string.feedback_type_bug
+            FeedbackType.FEATURE_REQUEST -> R.string.feedback_type_feature
+        },
+    )

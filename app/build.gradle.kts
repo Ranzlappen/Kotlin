@@ -11,11 +11,12 @@ plugins {
 }
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
-val keystoreProperties = Properties().apply {
-    if (keystorePropertiesFile.exists()) {
-        load(FileInputStream(keystorePropertiesFile))
+val keystoreProperties =
+    Properties().apply {
+        if (keystorePropertiesFile.exists()) {
+            load(FileInputStream(keystorePropertiesFile))
+        }
     }
-}
 
 android {
     namespace = "io.github.ranzlappen.template"
@@ -75,11 +76,12 @@ android {
             // Real signing when keystore.properties was supplied (CI writes
             // one from secrets); otherwise the public fallback keystore so
             // the release APK is still installable from every CI run.
-            signingConfig = if (keystoreProperties.isNotEmpty()) {
-                signingConfigs.getByName("release")
-            } else {
-                signingConfigs.getByName("fallback")
-            }
+            signingConfig =
+                if (keystoreProperties.isNotEmpty()) {
+                    signingConfigs.getByName("release")
+                } else {
+                    signingConfigs.getByName("fallback")
+                }
         }
     }
 
@@ -94,12 +96,13 @@ android {
 
     packaging {
         resources {
-            excludes += listOf(
-                "/META-INF/{AL2.0,LGPL2.1}",
-                "/META-INF/DEPENDENCIES",
-                "META-INF/LICENSE*",
-                "META-INF/NOTICE*",
-            )
+            excludes +=
+                listOf(
+                    "/META-INF/{AL2.0,LGPL2.1}",
+                    "/META-INF/DEPENDENCIES",
+                    "META-INF/LICENSE*",
+                    "META-INF/NOTICE*",
+                )
         }
     }
 }

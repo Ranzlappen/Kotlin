@@ -18,7 +18,6 @@ import io.github.ranzlappen.template.ui.TemplateApp
 // via AppCompatDelegate persists on Android < 13.
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
@@ -29,18 +28,23 @@ class MainActivity : AppCompatActivity() {
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
             val systemDark = isSystemInDarkTheme()
-            val (darkTheme, dynamicColor) = when (val state = uiState) {
-                MainActivityUiState.Loading -> systemDark to true
-                is MainActivityUiState.Success -> {
-                    val prefs = state.preferences
-                    val dark = when (prefs.darkThemeConfig) {
-                        DarkThemeConfig.FOLLOW_SYSTEM -> systemDark
-                        DarkThemeConfig.LIGHT -> false
-                        DarkThemeConfig.DARK -> true
+            val (darkTheme, dynamicColor) =
+                when (val state = uiState) {
+                    MainActivityUiState.Loading -> {
+                        systemDark to true
                     }
-                    dark to prefs.useDynamicColor
+
+                    is MainActivityUiState.Success -> {
+                        val prefs = state.preferences
+                        val dark =
+                            when (prefs.darkThemeConfig) {
+                                DarkThemeConfig.FOLLOW_SYSTEM -> systemDark
+                                DarkThemeConfig.LIGHT -> false
+                                DarkThemeConfig.DARK -> true
+                            }
+                        dark to prefs.useDynamicColor
+                    }
                 }
-            }
 
             TemplateTheme(
                 darkTheme = darkTheme,

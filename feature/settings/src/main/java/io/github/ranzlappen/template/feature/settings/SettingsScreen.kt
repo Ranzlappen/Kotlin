@@ -84,9 +84,10 @@ internal fun SettingsScreenContent(
                         Switch(
                             checked = uiState.preferences.useDynamicColor,
                             onCheckedChange = onUseDynamicColorChange,
-                            modifier = Modifier.semantics {
-                                contentDescription = "Dynamic color"
-                            },
+                            modifier =
+                                Modifier.semantics {
+                                    contentDescription = "Dynamic color"
+                                },
                         )
                     }
                 }
@@ -105,13 +106,14 @@ internal fun SettingsScreenContent(
                             onClick = { language.apply() },
                         )
                         Text(
-                            text = stringResource(
-                                when (language) {
-                                    AppLanguage.SYSTEM -> R.string.settings_language_system
-                                    AppLanguage.ENGLISH -> R.string.settings_language_english
-                                    AppLanguage.GERMAN -> R.string.settings_language_german
-                                },
-                            ),
+                            text =
+                                stringResource(
+                                    when (language) {
+                                        AppLanguage.SYSTEM -> R.string.settings_language_system
+                                        AppLanguage.ENGLISH -> R.string.settings_language_english
+                                        AppLanguage.GERMAN -> R.string.settings_language_german
+                                    },
+                                ),
                             style = MaterialTheme.typography.bodyLarge,
                         )
                     }
@@ -121,10 +123,11 @@ internal fun SettingsScreenContent(
             SectionHeader(stringResource(R.string.settings_section_about))
             TemplateCard {
                 Text(
-                    text = stringResource(
-                        R.string.settings_about_version,
-                        context.appVersionName(),
-                    ),
+                    text =
+                        stringResource(
+                            R.string.settings_about_version,
+                            context.appVersionName(),
+                        ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -151,13 +154,14 @@ private fun ThemeOptionRow(
     ) {
         RadioButton(selected = selected, onClick = onSelect)
         Text(
-            text = stringResource(
-                when (config) {
-                    DarkThemeConfig.FOLLOW_SYSTEM -> R.string.settings_theme_system
-                    DarkThemeConfig.LIGHT -> R.string.settings_theme_light
-                    DarkThemeConfig.DARK -> R.string.settings_theme_dark
-                },
-            ),
+            text =
+                stringResource(
+                    when (config) {
+                        DarkThemeConfig.FOLLOW_SYSTEM -> R.string.settings_theme_system
+                        DarkThemeConfig.LIGHT -> R.string.settings_theme_light
+                        DarkThemeConfig.DARK -> R.string.settings_theme_dark
+                    },
+                ),
             style = MaterialTheme.typography.bodyLarge,
         )
     }
@@ -171,8 +175,9 @@ private fun Context.openUrl(url: String) {
     }
 }
 
-private fun Context.appVersionName(): String = try {
-    packageManager.getPackageInfo(packageName, 0).versionName ?: "?"
-} catch (_: Exception) {
-    "?"
-}
+private fun Context.appVersionName(): String =
+    try {
+        packageManager.getPackageInfo(packageName, 0).versionName ?: "?"
+    } catch (_: Exception) {
+        "?"
+    }

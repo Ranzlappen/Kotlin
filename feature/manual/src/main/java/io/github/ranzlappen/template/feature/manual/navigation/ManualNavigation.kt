@@ -8,8 +8,7 @@ import io.github.ranzlappen.template.feature.manual.ManualScreen
 
 const val MANUAL_ROUTE = "manual"
 
-fun NavController.navigateToManual(navOptions: NavOptions? = null) =
-    navigate(MANUAL_ROUTE, navOptions)
+fun NavController.navigateToManual(navOptions: NavOptions? = null) = navigate(MANUAL_ROUTE, navOptions)
 
 fun NavGraphBuilder.manualScreen() {
     composable(route = MANUAL_ROUTE) {

@@ -16,19 +16,16 @@ import io.github.ranzlappen.template.core.common.coroutines.TemplateDispatchers
 import io.github.ranzlappen.template.core.common.di.ApplicationScope
 import io.github.ranzlappen.template.core.data.prefs.DataStoreUserPreferencesRepository
 import io.github.ranzlappen.template.core.data.prefs.UserPreferencesRepository
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.plus
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 internal interface DataModule {
-
     @Binds
-    fun bindsUserPreferencesRepository(
-        impl: DataStoreUserPreferencesRepository,
-    ): UserPreferencesRepository
+    fun bindsUserPreferencesRepository(impl: DataStoreUserPreferencesRepository): UserPreferencesRepository
 
     companion object {
         @Provides
@@ -37,10 +34,11 @@ internal interface DataModule {
             @ApplicationContext context: Context,
             @ApplicationScope scope: CoroutineScope,
             @Dispatcher(TemplateDispatchers.IO) ioDispatcher: CoroutineDispatcher,
-        ): DataStore<Preferences> = PreferenceDataStoreFactory.create(
-            scope = scope.plus(ioDispatcher),
-        ) {
-            context.preferencesDataStoreFile("user_preferences")
-        }
+        ): DataStore<Preferences> =
+            PreferenceDataStoreFactory.create(
+                scope = scope.plus(ioDispatcher),
+            ) {
+                context.preferencesDataStoreFile("user_preferences")
+            }
     }
 }

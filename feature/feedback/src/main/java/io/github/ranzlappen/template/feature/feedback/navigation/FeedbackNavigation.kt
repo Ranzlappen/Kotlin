@@ -8,8 +8,7 @@ import io.github.ranzlappen.template.feature.feedback.FeedbackScreen
 
 const val FEEDBACK_ROUTE = "feedback"
 
-fun NavController.navigateToFeedback(navOptions: NavOptions? = null) =
-    navigate(FEEDBACK_ROUTE, navOptions)
+fun NavController.navigateToFeedback(navOptions: NavOptions? = null) = navigate(FEEDBACK_ROUTE, navOptions)
 
 fun NavGraphBuilder.feedbackScreen() {
     composable(route = FEEDBACK_ROUTE) {

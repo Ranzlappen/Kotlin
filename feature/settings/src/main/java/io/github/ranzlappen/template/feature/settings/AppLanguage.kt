@@ -7,7 +7,9 @@ import androidx.core.os.LocaleListCompat
  * Languages the app ships. Extend this list together with the matching
  * `values-<tag>` resource folders and `res/xml/locales_config.xml`.
  */
-enum class AppLanguage(val tag: String?) {
+enum class AppLanguage(
+    val tag: String?,
+) {
     SYSTEM(null),
     ENGLISH("en"),
     GERMAN("de"),

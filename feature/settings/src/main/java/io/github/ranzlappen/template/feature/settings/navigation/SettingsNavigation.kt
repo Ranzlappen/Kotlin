@@ -8,8 +8,7 @@ import io.github.ranzlappen.template.feature.settings.SettingsScreen
 
 const val SETTINGS_ROUTE = "settings"
 
-fun NavController.navigateToSettings(navOptions: NavOptions? = null) =
-    navigate(SETTINGS_ROUTE, navOptions)
+fun NavController.navigateToSettings(navOptions: NavOptions? = null) = navigate(SETTINGS_ROUTE, navOptions)
 
 fun NavGraphBuilder.settingsScreen() {
     composable(route = SETTINGS_ROUTE) {

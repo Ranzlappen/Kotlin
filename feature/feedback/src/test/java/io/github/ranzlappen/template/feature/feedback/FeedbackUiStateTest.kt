@@ -7,7 +7,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class FeedbackUiStateTest {
-
     @Test
     fun `cannot submit with blank description`() {
         assertFalse(FeedbackUiState(description = "   ").canSubmit)

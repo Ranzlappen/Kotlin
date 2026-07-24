@@ -34,13 +34,14 @@ private data class ManualChapter(
     @param:StringRes val body: Int,
 )
 
-private val chapters = listOf(
-    ManualChapter(R.string.manual_chapter_start_title, R.string.manual_chapter_start_body),
-    ManualChapter(R.string.manual_chapter_theme_title, R.string.manual_chapter_theme_body),
-    ManualChapter(R.string.manual_chapter_language_title, R.string.manual_chapter_language_body),
-    ManualChapter(R.string.manual_chapter_feedback_title, R.string.manual_chapter_feedback_body),
-    ManualChapter(R.string.manual_chapter_privacy_title, R.string.manual_chapter_privacy_body),
-)
+private val chapters =
+    listOf(
+        ManualChapter(R.string.manual_chapter_start_title, R.string.manual_chapter_start_body),
+        ManualChapter(R.string.manual_chapter_theme_title, R.string.manual_chapter_theme_body),
+        ManualChapter(R.string.manual_chapter_language_title, R.string.manual_chapter_language_body),
+        ManualChapter(R.string.manual_chapter_feedback_title, R.string.manual_chapter_feedback_body),
+        ManualChapter(R.string.manual_chapter_privacy_title, R.string.manual_chapter_privacy_body),
+    )
 
 /** In-app user manual: expandable chapters, fully localized. */
 @Composable
@@ -65,9 +66,10 @@ private fun ManualChapterCard(chapter: ManualChapter) {
     var expanded by rememberSaveable { mutableStateOf(false) }
     val spacing = LocalSpacing.current
     TemplateCard(
-        modifier = Modifier
-            .clickable { expanded = !expanded }
-            .animateContentSize(),
+        modifier =
+            Modifier
+                .clickable { expanded = !expanded }
+                .animateContentSize(),
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
