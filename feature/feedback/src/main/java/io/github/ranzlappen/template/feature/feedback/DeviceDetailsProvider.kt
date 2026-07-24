@@ -2,6 +2,7 @@ package io.github.ranzlappen.template.feature.feedback
 
 import android.content.Context
 import android.os.Build
+import androidx.core.content.pm.PackageInfoCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.github.ranzlappen.template.core.model.DeviceDetails
 import java.util.Locale
@@ -35,7 +36,7 @@ class DeviceDetailsProvider
         private fun appVersion(): String =
             try {
                 val info = context.packageManager.getPackageInfo(context.packageName, 0)
-                "${info.versionName} (${info.longVersionCode})"
+                "${info.versionName} (${PackageInfoCompat.getLongVersionCode(info)})"
             } catch (_: Exception) {
                 "unknown"
             }
