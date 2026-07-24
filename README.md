@@ -74,7 +74,7 @@ run a final requirements pass whenever this template spawns a new repo.
 ./gradlew lintDebug              # Android Lint (strict)
 ```
 
-Requires JDK 17. Kotlin 2.3, AGP 9.2, Gradle 9.5.1, compileSdk 36,
+Requires JDK 17. Kotlin 2.3, AGP 9.2, Gradle 9.5.1, compileSdk 37,
 minSdk 26. Releases: Actions → **Release** → run with patch/minor/major.
 Signing secrets are optional — see [signing/README.md](signing/README.md).
 

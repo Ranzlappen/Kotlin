@@ -36,6 +36,10 @@ jobs:
 
       - name: Run dependency-review
         uses: actions/dependency-review-action@v4
+        # Soft gate until the repo's Dependency graph is enabled (Settings ->
+        # Advanced Security). Remove this line afterwards to make it a hard
+        # gate — see REPO_SETUP_CHECKLIST.md section 3.
+        continue-on-error: true
         with:
           # Block PRs that introduce high or critical CVEs.
           fail-on-severity: high
