@@ -72,7 +72,11 @@ jobs:
           queries: security-extended
 
       - name: Build for analysis
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        # --no-build-cache is load-bearing: with a warm Gradle cache the
+        # compile tasks come FROM-CACHE, the CodeQL tracer sees no real
+        # compilation, and the job dies with "no source code seen during
+        # build". Always recompile here.
+        run: ./gradlew assembleDebug --no-daemon --stacktrace --no-build-cache
 
       - name: Analyze
         uses: github/codeql-action/analyze@v3
