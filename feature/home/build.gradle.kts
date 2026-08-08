@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "io.github.ranzlappen.template.feature.home"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 26
