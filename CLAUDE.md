@@ -81,9 +81,9 @@ Signing secrets (optional; fallback keystore otherwise): `KEYSTORE_BASE64`,
 
 ## Tech stack
 
-Kotlin 2.3 · AGP 9.2 (built-in Kotlin — **no** standalone kotlin-android
-plugin) · Gradle 9.5.1 wrapper · JDK 17 · compileSdk 36 / minSdk 26 ·
-Compose BOM 2026.05.01 + Material 3 · Navigation Compose · Hilt + KSP ·
+Kotlin 2.4 · AGP 9.3 (built-in Kotlin — **no** standalone kotlin-android
+plugin) · Gradle 9.6.1 wrapper · JDK 17 · compileSdk 37 / minSdk 26 ·
+Compose BOM 2026.06.01 + Material 3 · Navigation Compose · Hilt + KSP ·
 Preferences DataStore · JUnit4 + coroutines-test + Turbine ·
 Spotless(ktlint) + detekt.
 
