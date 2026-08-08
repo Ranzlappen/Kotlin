@@ -46,7 +46,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Setup JDK 17
         uses: actions/setup-java@v5
@@ -65,17 +65,21 @@ jobs:
           cache-read-only: true
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: java-kotlin
           build-mode: manual
           queries: security-extended
 
       - name: Build for analysis
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        # --no-build-cache is load-bearing: with a warm Gradle cache the
+        # compile tasks come FROM-CACHE, the CodeQL tracer sees no real
+        # compilation, and the job dies with "no source code seen during
+        # build". Always recompile here.
+        run: ./gradlew assembleDebug --no-daemon --stacktrace --no-build-cache
 
       - name: Analyze
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v4
         with:
           category: '/language:java-kotlin'
 
@@ -85,13 +89,13 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           # Full history so gitleaks scans past commits, not just the diff.
           fetch-depth: 0
 
       - name: Run gitleaks
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -108,7 +112,7 @@ jobs:
       actions: read
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -121,7 +125,7 @@ jobs:
           publish_results: true
 
       - name: Upload SARIF results
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: results.sarif
           category: ossf-scorecard
