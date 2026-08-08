@@ -32,10 +32,10 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Run dependency-review
-        uses: actions/dependency-review-action@v4
+        uses: actions/dependency-review-action@v5
         # Soft gate until the repo's Dependency graph is enabled (Settings ->
         # Advanced Security). Remove this line afterwards to make it a hard
         # gate — see REPO_SETUP_CHECKLIST.md section 3.
